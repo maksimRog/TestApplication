@@ -1,6 +1,7 @@
 package com.mraha.weatherforecast.restapi;
 
 import com.mraha.weatherforecast.WFApplication;
+import com.mraha.weatherforecast.database.AppData;
 import com.mraha.weatherforecast.pojo.CurrentMain;
 import com.mraha.weatherforecast.pojo.ForecastMain;
 import com.google.gson.Gson;
@@ -20,9 +21,14 @@ public class Repository {
         Gson gson = new Gson();
         try {
            Response<CurrentMain>currentMainResponse= currentData.execute();
+          CurrentMain currentMain= currentMainResponse.body();
+          AppData appData=new AppData();
+          appData.time=System.currentTimeMillis();
+          appData.data=gson.toJson(currentMain);
+          WFApplication.getInstance().getAppDatabase().appDataDAO().insertAll(appData);
             WFApplication.getInstance()
                     .getApplicationPreferences().edit()
-                    .putString("dataToday", gson.toJson(currentMainResponse.body()))
+                    .putString("dataToday", gson.toJson(currentMain))
                     .putString("dataForecast", gson.toJson(forecastData.execute().body())).apply();
         } catch (IOException e) {
             e.printStackTrace();

@@ -55,7 +55,6 @@ public class MLocationListener implements LocationListener {
                     @Override
                     public void onError(Throwable e) {
                         Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show();
-
                     }
                 });
 

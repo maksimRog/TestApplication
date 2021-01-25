@@ -8,68 +8,15 @@
     android:layout_marginBottom="@dimen/_4sdp"
     android:orientation="vertical">
 
+
     <TextView
-        android:id="@+id/item_view_day_of_week"
-        android:layout_width="match_parent"
+        android:id="@+id/item_view_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/day_of_week_shape"
-        android:gravity="center"
-        android:textColor="@color/colorMain"
-        android:text="friday"
-        android:textSize="@dimen/_25ssp"
-        android:visibility="visible"
-        android:layout_marginBottom="@dimen/_5sdp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:text="cleaasssssssssssfsghaaaaaaaaaaaaaaaaaaaaaaaar"
+        android:textAlignment="center"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold" />
 
-        <ImageView
-            android:layout_gravity="center"
-            android:id="@+id/item_view_image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginStart="3dp"
-            android:src="@drawable/clouds" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="2">
-
-            <TextView
-                android:id="@+id/item_view_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="13:00"
-                android:textSize="@dimen/_30ssp" />
-
-            <TextView
-                android:id="@+id/item_view_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/item_view_time"
-                android:textSize="@dimen/_13ssp"
-                android:layout_centerHorizontal="true"
-                android:text="cleaasssssssssssfsghaaaaaaaaaaaaaaaaaaaaaaaar"
-                android:textAlignment="center"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/item_view_degrees"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="2"
-            android:textColor="@color/colorMain"
-            android:gravity="center"
-            android:text="22°"
-            android:textSize="@dimen/_50ssp" />
-    </LinearLayout>
 
 </LinearLayout>

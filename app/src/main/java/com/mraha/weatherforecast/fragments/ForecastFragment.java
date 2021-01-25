@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mraha.weatherforecast.ForecastAdapter;
 import com.mraha.weatherforecast.MainActivity;
 import com.mraha.weatherforecast.R;
+import com.mraha.weatherforecast.WFApplication;
 import com.mraha.weatherforecast.restapi.Repository;
 
 public class ForecastFragment extends Fragment implements FragmentView {
@@ -26,7 +27,7 @@ public class ForecastFragment extends Fragment implements FragmentView {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
-        ((MainActivity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        ((MainActivity) context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Nullable
@@ -45,10 +46,22 @@ public class ForecastFragment extends Fragment implements FragmentView {
 
     @Override
     public void initViews() {
-        if(Repository.getForecastData()!=null){
+        if (Repository.getForecastData() != null) {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            ForecastAdapter forecastAdapter = new ForecastAdapter(context);
-            recyclerView.setAdapter(forecastAdapter);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ForecastAdapter forecastAdapter = new ForecastAdapter(context,
+                            WFApplication.getInstance().getAppDatabase().appDataDAO().getAll());
+                    ((MainActivity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            recyclerView.setAdapter(forecastAdapter);
+                        }
+                    });
+                }
+            }).start();
+
         }
 
     }
