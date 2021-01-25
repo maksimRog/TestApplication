@@ -28,4 +28,6 @@
     <string name="humidity">"Влажность: "</string>
     <string name="wind_speed">"Скорость ветра: "</string>
     <string name="updating">Обновляется</string>
+    <string name="now">Сейчас</string>
+    <string name="log">Архив</string>
 </resources>

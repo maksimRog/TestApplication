@@ -4,12 +4,12 @@
     <item
         android:icon="@drawable/today"
         android:id="@+id/item_today"
-        android:title="@string/today"
+        android:title="@string/now"
         app:showAsAction="ifRoom" />
     <item
         android:icon="@drawable/forecast"
         android:id="@+id/item_forecast"
-        android:title="@string/forecast"
+        android:title="@string/log"
         app:showAsAction="ifRoom" />
     <item
         android:icon="@drawable/settings"

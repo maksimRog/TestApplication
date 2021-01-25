@@ -33,7 +33,7 @@ public class CurrentMain {
     private Clouds clouds;
     @SerializedName("dt")
     @Expose
-    private Integer dt;
+    private long dt;
     @SerializedName("sys")
     @Expose
     private Sys sys;
@@ -49,6 +49,16 @@ public class CurrentMain {
     @SerializedName("cod")
     @Expose
     private Integer cod;
+
+    private Coord coord;
+
+    public Coord getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coord coord) {
+        this.coord = coord;
+    }
 
     @Override
     public String toString() {
@@ -113,11 +123,11 @@ public class CurrentMain {
         this.clouds = clouds;
     }
 
-    public Integer getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(Integer dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 

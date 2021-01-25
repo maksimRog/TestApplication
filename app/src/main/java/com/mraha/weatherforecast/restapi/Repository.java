@@ -15,17 +15,16 @@ import retrofit2.Response;
 
 public class Repository {
     public static void doCalls(double latitude, double longitude) {
-        Locale locale=Locale.getDefault();
-        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentData(latitude, longitude,Locale.getDefault().getLanguage());
-        Call<ForecastMain> forecastData = RestApiHelper.initRestApiObject().getForecastData(latitude, longitude,Locale.getDefault().getLanguage());
+        Locale locale = Locale.getDefault();
+        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentData(latitude, longitude, Locale.getDefault().getLanguage());
+        Call<ForecastMain> forecastData = RestApiHelper.initRestApiObject().getForecastData(latitude, longitude, Locale.getDefault().getLanguage());
         Gson gson = new Gson();
         try {
-           Response<CurrentMain>currentMainResponse= currentData.execute();
-          CurrentMain currentMain= currentMainResponse.body();
-          AppData appData=new AppData();
-          appData.time=System.currentTimeMillis();
-          appData.data=gson.toJson(currentMain);
-          WFApplication.getInstance().getAppDatabase().appDataDAO().insertAll(appData);
+            Response<CurrentMain> currentMainResponse = currentData.execute();
+            CurrentMain currentMain = currentMainResponse.body();
+            AppData appData = new AppData();
+            appData.data = gson.toJson(currentMain);
+            WFApplication.getInstance().getAppDatabase().appDataDAO().insertAll(appData);
             WFApplication.getInstance()
                     .getApplicationPreferences().edit()
                     .putString("dataToday", gson.toJson(currentMain))
@@ -36,37 +35,38 @@ public class Repository {
     }
 
     public static boolean test(String city) {
-        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentDataByCity(city,Locale.getDefault().getLanguage());
+        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentDataByCity(city, Locale.getDefault().getLanguage());
         Call<ForecastMain> forecastData = RestApiHelper.initRestApiObject().getForecastDataByCity(city, Locale.getDefault().getLanguage());
 
-        boolean res=false;
+        boolean res = false;
         Gson gson = new Gson();
-            currentData.enqueue(new Callback<CurrentMain>() {
-                @Override
-                public void onResponse(Call<CurrentMain> call, Response<CurrentMain> response) {
+        currentData.enqueue(new Callback<CurrentMain>() {
+            @Override
+            public void onResponse(Call<CurrentMain> call, Response<CurrentMain> response) {
 
-                }
+            }
 
-                @Override
-                public void onFailure(Call<CurrentMain> call, Throwable t) {
+            @Override
+            public void onFailure(Call<CurrentMain> call, Throwable t) {
 
-                }
-            });
+            }
+        });
 
         return res;
     }
-        public static boolean callByCity(String city) {
-        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentDataByCity(city,Locale.getDefault().getLanguage());
-        Call<ForecastMain> forecastData = RestApiHelper.initRestApiObject().getForecastDataByCity(city,Locale.getDefault().getLanguage());
 
-        boolean res=false;
+    public static boolean callByCity(String city) {
+        Call<CurrentMain> currentData = RestApiHelper.initRestApiObject().getCurrentDataByCity(city, Locale.getDefault().getLanguage());
+        Call<ForecastMain> forecastData = RestApiHelper.initRestApiObject().getForecastDataByCity(city, Locale.getDefault().getLanguage());
+
+        boolean res = false;
         Gson gson = new Gson();
 
         try {
             Response<CurrentMain> currentMainResponse = currentData.execute();
-            Response<ForecastMain>forecastMainResponse=forecastData.execute();
-            if (currentMainResponse.isSuccessful()&&forecastMainResponse.isSuccessful()) {
-                res=true;
+            Response<ForecastMain> forecastMainResponse = forecastData.execute();
+            if (currentMainResponse.isSuccessful() && forecastMainResponse.isSuccessful()) {
+                res = true;
                 WFApplication.getInstance()
                         .getApplicationPreferences().edit()
                         .putString("dataToday", gson.toJson(currentMainResponse.body()))

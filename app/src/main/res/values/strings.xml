@@ -28,7 +28,8 @@
     <string name="humidity">Humidity: </string>
     <string name="wind_speed">Wind speed: </string>
     <string name="updating">Updating</string>
-
+    <string name="now">Now</string>
+    <string name="log">Log</string>
 
 
 </resources>

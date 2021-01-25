@@ -22,6 +22,7 @@ import com.mraha.weatherforecast.MainActivity;
 import com.mraha.weatherforecast.R;
 import com.mraha.weatherforecast.pojo.CurrentMain;
 import com.mraha.weatherforecast.restapi.Repository;
+import com.mraha.weatherforecast.util.LocationHelper;
 
 import java.io.IOException;
 import java.util.List;
@@ -106,26 +107,14 @@ public class TodayFragment extends Fragment implements FragmentView {
 
     public void setCurrentLocation() {
         MLocationListener mLocationListener = (MLocationListener) ((MainActivity) context).getLocationListener();
-        List<Address> addresses;
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-        double latitude = mLocationListener.getLatitude();
-        double longitude = mLocationListener.getLongitude();
-        try {
-            addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            if (!addresses.isEmpty()) {
-                locationTV.setText("Your current coordinates:"
-                        + "\n" + "Longitude is "
-                        + longitude
-                        + "\n" + "Latitude is " + latitude
-                        + "\n" + "Your current adress is " + addresses.get(0).getAddressLine(0));
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        locationTV.setText(LocationHelper.
+                generateAddressFromCoords(context, mLocationListener.getLatitude(), mLocationListener.getLongitude()));
 
 
     }
+
 }
 
 
