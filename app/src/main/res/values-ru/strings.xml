@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="last_time_of_update">Последний раз обновлено</string>
+    <string name="update_interval">Интервал обновлений</string>
+    <string name="choose_city_manually">Указать город в ручную</string>
+    <string name="current_city">Текущий город</string>
+    <string name="settings">Настройки</string>
+    <string name="forecast">Прогноз</string>
+    <string name="today">Сегодня</string>
+    <string name="update_settings_title">Обновление данных</string>
+    <string name="share">Поделиться</string>
+    <string name="at">в</string>
+    <string name="m_s">" м/с"</string>
+    <string name="m_m">" мм"</string>
+    <string name="h_Pa">" гПа"</string>
+    <string name="precip_def_value">0 мм</string>
+    <string name="precip_per_hour">мм за час</string>
+    <string name="precip_per_3hour">мм за 3 часа</string>
+    <string name="app_uses_geolocation">Приложение использует геолокацию. Перезапустите для корректной работы или укажите ваш город в настройках.</string>
+    <string name="turn_on_location_service">Включите геолокацию и перезайдите в приложение или укажите ваш город в настройках.</string>
+    <string name="seems_no_internet_connection">Нет интернет соединения!</string>
+    <string name="data_updated">Данные обновлены!</string>
+    <string name="not_valid_city_or_no_internet">Неправильный город или нет интернет соединения.</string>
+    <string name="city_not_set">Город не выбран</string>
+    <string name="city">"Город: "</string>
+    <string name="temperature">"Температура: "</string>
+    <string name="humidity">"Влажность: "</string>
+    <string name="wind_speed">"Скорость ветра: "</string>
+    <string name="updating">Обновляется</string>
+</resources>

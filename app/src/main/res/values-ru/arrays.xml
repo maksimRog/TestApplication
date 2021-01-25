@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array  name="wind_directions">
+        <item>С</item>
+        <item>СВ</item>
+        <item>В</item>
+        <item>ЮВ</item>
+        <item>Ю</item>
+        <item>ЮЗ</item>
+        <item>З</item>
+        <item>СЗ</item>
+    </string-array>
+
+    <string-array name="update_interval_names">
+        <item>10м</item>
+        <item>30м</item>
+        <item>1ч</item>
+        <item>3ч</item>
+    </string-array>
+</resources>
